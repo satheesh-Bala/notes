@@ -1,0 +1,25 @@
+git init ->to initialize git repo
+git add  ->to add the ready to commit files
+git add .  -> add all files to ready to commit in the whole branch
+git add./  -> add all files to ready to commit in the current dir
+git config --global core.autocrlf false  -> to remove the auto corection or some warnings
+   |
+error: warning: in the working copy of 'djangoRestApi/django_env/Lib/site-packages/django/conf/locale/en_AU/formats.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'djangoRestApi/django_env/Lib/site-packages/django/conf/locale/en_GB/LC_MESSAGES/django.po', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'djangoRestApi/django_env/Lib/site-packages/django/conf/locale/en_GB/formats.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'djangoRestApi/django_env/Lib/site-packages/django/conf/locale/eo/LC_MESSAGES/django.po', LF will be replaced by CRLF the next time Git touches it
+
+git config --global --add safe.directory F:/ -> create git local repo or initilize and make that as a global access
+git config --global user.email "you@example.com"   -> set identity
+git config --global user.name "Your Name"          -> set identity
+
+git remote add origin "remote-url"    -> connect to the remote repo
+git remote -v   -> used to check the connected repo
+git push origin master  -> pus the commited code to remote repo
+
+to clone using ssh:
+create public/private key in local path:
+	ssh-keygen -t rsa -b 2048 -f ./key -> to generate the key
+create clone in path using key:
+	git clone git@github.com:satheesh-Bala/first_repo.git --config core.sshCommand="ssh -i 'C:\Users\satheesh b/.ssh/id_rsa'" -> to clone repo using public/private key. to run ssh-agent, open win+r type: services.mcs enable openSSH authutication service
+
