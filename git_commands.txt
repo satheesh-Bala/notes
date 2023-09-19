@@ -17,6 +17,21 @@ git remote add origin "remote-url"    -> connect to the remote repo
 git remote -v   -> used to check the connected repo
 git push origin master  -> pus the commited code to remote repo
 
+to change in repo manuaully and facing error:
+F:\Notes>git pull origin master
+From https://github.com/satheesh-Bala/notes
+ * branch            master     -> FETCH_HEAD
+fatal: refusing to merge unrelated histories
+
+solve the above error:
+F:\Notes>git pull origin master --allow-unrelated-histories
+From https://github.com/satheesh-Bala/notes
+ * branch            master     -> FETCH_HEAD
+Merge made by the 'ort' strategy.
+ README.md | 2 ++
+ 1 file changed, 2 insertions(+)
+ create mode 100644 README.md
+
 to clone using ssh:
 create public/private key in local path:
 	ssh-keygen -t rsa -b 2048 -f ./key -> to generate the key
