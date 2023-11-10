@@ -1,0 +1,3 @@
+Virtual maze VMMAPS source code:
+git clone ssh://vmgit@zeus.virtualmaze.in:18189/media/Jupiter/vmgit/VMMAPS-Valhalla/
+git pasword : 2h:>i\Djis+~O!

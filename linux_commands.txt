@@ -1,6 +1,0 @@
-sudo apt install ./'name of the installed .deb file' -> to install downloded .deb file
-sudo apt update -> downlode all recent packges 
-sudo apt ugrade -> install the updated pakages
-
-sudo apt install openjdk-16-jdk  -> installing the java 
-

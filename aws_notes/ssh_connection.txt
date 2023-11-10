@@ -1,0 +1,113 @@
+C:\Windows\system32>icacls "F:\remote_key\key.pem"
+F:\remote_key\key.pem DESKTOP-FU8JGH3\satheesh b:(R)
+                      BUILTIN\Administrators:(I)(F)
+                      NT AUTHORITY\SYSTEM:(I)(F)
+                      NT AUTHORITY\Authenticated Users:(I)(M)
+                      BUILTIN\Users:(I)(RX)
+
+Successfully processed 1 files; Failed processing 0 files
+
+C:\Windows\system32>ssh -i "F:\remote_key\key.pem" ec2-user@ec2-13-232-155-228.ap-south-1.compute.amazonaws.com
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Permissions for 'F:\\remote_key\\key.pem' are too open.
+It is required that your private key files are NOT accessible by others.
+This private key will be ignored.
+Load key "F:\\remote_key\\key.pem": bad permissions
+ec2-user@ec2-13-232-155-228.ap-south-1.compute.amazonaws.com: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).
+
+C:\Windows\system32>copy "F:\remote_key\key.pem" "%USERPROFILE%\Documents"
+        1 file(s) copied.
+
+C:\Windows\system32>ssh -i "%USERPROFILE%\Documents\key.pem" ec2-user@ec2-13-232-155-228.ap-south-1.compute.amazonaws.com
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+[ec2-user@ip-172-31-3-16 ~]$
+
+
+
+
+
+
+
+
+I see that you've successfully reset the permissions on the key.pem file, but you're still encountering the "bad permissions" error. This issue might be related to the Windows file system itself.
+
+To work around this problem, you can create a copy of the private key file in a location that has more restrictive permissions. Here's how you can do it:
+
+Copy the Key File:
+
+Copy the key.pem file to a directory that has tighter permissions, such as your user's profile directory or another directory where you have full control.
+
+For example, you can copy it to your user's profile directory:
+
+shell
+Copy code
+copy "F:\remote_key\key.pem" "%USERPROFILE%\Documents"
+This command copies the key file to your Documents folder, which typically has restricted permissions.
+
+Update SSH Command:
+
+Modify your SSH command to use the copied key file:
+
+shell
+Copy code
+ssh -i "%USERPROFILE%\Documents\key.pem" ec2-user@ec2-13-232-155-228.ap-south-1.compute.amazonaws.com
+This command specifies the path to the copied key file in your user's profile directory.
+
+Attempt the SSH Connection:
+
+Try to SSH using the updated command. The copied key file should have more restrictive permissions by default in your user's profile directory.
+
+If you continue to encounter issues with permissions, it's possible that there may be some system-level policies or third-party security software affecting the behavior. In such cases, you may need to consult with your system administrator or IT department for further assistance.
+
+
+
+
+
+
+
+file tranfer:
+	C:\Users\satheesh b>scp -i "%USERPROFILE%\Documents\key.pem" -r "F:\django projects\articalCrud" ec2-user@ec2-13-232-155-228.ap-south-1.compute.amazonaws.com:django_artical_crud/
+admin.py                                                                                                                              100%  133     1.9KB/s   00:00
+apps.py                                                                                                                               100%  144     1.9KB/s   00:00
+0001_initial.py                                                                                                                       100%  571     7.9KB/s   00:00
+0002_rename_discription_articalmodel_description.py                                                                                   100%  382     4.6KB/s   00:00
+__init__.py                                                                                                                           100%    0     0.0KB/s   00:00
+0001_initial.cpython-311.pyc                                                                                                          100% 1008    11.6KB/s   00:00
+0002_rename_discription_articalmodel_description.cpython-311.pyc                                                                      100%  746    10.1KB/s   00:00
+__init__.cpython-311.pyc                                                                                                              100%  166     2.3KB/s   00:00
+models.py                                                                                                                             100%  226     2.8KB/s   00:00
+serializers.py                                                                                                                        100%  933    14.6KB/s   00:00
+tests.py                                                                                                                              100%   63     0.7KB/s   00:00
+urls.py                                                                                                                               100%  236     1.4KB/s   00:00
+views.py                                                                                                                              100% 3235    35.0KB/s   00:00
+__init__.py                                                                                                                           100%    0     0.0KB/s   00:00
+admin.cpython-311.pyc                                                                                                                 100%  377     3.4KB/s   00:00
+apps.cpython-311.pyc                                                                                                                  100%  520     6.9KB/s   00:00
+models.cpython-311.pyc                                                                                                                100%  783     3.8KB/s   00:00
+serializers.cpython-311.pyc                                                                                                           100% 2488    28.7KB/s   00:00
+urls.cpython-311.pyc                                                                                                                  100%  657     7.9KB/s   00:00
+views.cpython-311.pyc                                                                                                                 100% 6081    53.9KB/s   00:00
+__init__.cpython-311.pyc                                                                                                              100%  155     2.2KB/s   00:00
+asgi.py                                                                                                                               100%  415     3.2KB/s   00:00
+settings.py                                                                                                                           100% 3622    40.9KB/s   00:00
+urls.py                                                                                                                               100%  172     2.1KB/s   00:00
+wsgi.py                                                                                                                               100%  415     4.9KB/s   00:00
+__init__.py                                                                                                                           100%    0     0.0KB/s   00:00
+settings.cpython-311.pyc                                                                                                              100% 2807    22.3KB/s   00:00
+urls.cpython-311.pyc                                                                                                                  100%  483     6.5KB/s   00:00
+wsgi.cpython-311.pyc                                                                                                                  100%  693     8.5KB/s   00:00
+__init__.cpython-311.pyc                                                                                                              100%  163     2.3KB/s   00:00
+db.sqlite3                                                                                                                            100%  148KB 174.5KB/s   00:00
+manage.py                                                                                                                             100%  689     9.1KB/s   00:00
+requirments.txt
